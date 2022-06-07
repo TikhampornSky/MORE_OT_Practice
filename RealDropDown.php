@@ -79,11 +79,20 @@
 <h2>Search/Filter Dropdown</h2>
 <p>Demo of drag and drop for select approval</p>
 
+<div>
+    <label for="SelectTypeOfWork">โปรดเลือกรูปแบบการทำงานของคุณ :</label>
+    <select name="typeWork" id="IDtypeWork">
+        <option value="none" selected disabled hidden>รูปแบบการทำงาน</option>
+        <option value="ปกติ"> ปกติ </option>
+        <option value="ทำงานนอกสถานที่"> ทำงานนอกสถานที่ </option>
+    </select>
+</div>
+
 <div class="dropdown">
   <input type="checkbox" id="myCheck" onclick="myFunction()">
-  <label for="myCheck">Check here if you have approver</label> 
+  <label for="myCheck">โปรดเลือกผู้อนุมัติของท่าน</label> 
     <div id="myDropdown" class="dropdown-content" >
-    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+    <input type="text" placeholder="โปรดใส่ชื่อผู้อนุมัติของท่าน" id="myInput" onkeyup="filterFunction()">
     <div id="listTochoose">
         <!-- <a onclick="mySelect('ทิฆัมพร เทพสุต')">ทิฆัมพร เทพสุต <br> 1111111111 </a> -->
         <?php
