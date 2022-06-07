@@ -202,7 +202,5 @@ function mySelect(valueSelect) {
 
 </script>
 
-
-
 </body>
 </html>
