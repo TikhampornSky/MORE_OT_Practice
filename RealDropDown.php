@@ -43,6 +43,7 @@
   padding: 14px 20px 12px 45px;
   border: none;
   border-bottom: 1px solid #ddd;
+  height: auto;
 }
 
 #myInput:focus {outline: 3px solid #ddd;}
@@ -54,12 +55,12 @@
 
 .dropdown-content {
   display: none;
-  position: absolute;
   background-color: #f6f6f6;
   min-width: 230px;
   overflow: auto;
   border: 1px solid #ddd;
-  z-index: 1;
+  height: auto;
+  position: relative;
 }
 
 .dropdown-content a {
@@ -88,23 +89,29 @@
     </select>
 </div>
 
-<div class="dropdown">
+<div class="dropdown" id="alldropdown">
     <input type="checkbox" id="myCheck" onclick="myFunction()">
     <label for="myCheck">โปรดเลือกผู้อนุมัติของท่าน</label> 
+    <div>
+        <h1> Hiiiiiiiiiiiiiii </h1>
+    </div>
     <div id="myDropdown" class="dropdown-content" >
-    <input type="text" placeholder="โปรดใส่ชื่อผู้อนุมัติของท่าน" id="myInput" onkeyup="filterFunction()">
-    <div id="listTochoose">
+        <input type="text" placeholder="โปรดใส่ชื่อผู้อนุมัติของท่าน" id="myInput" onkeyup="filterFunction()">
+        <div id="listTochoose">
         <!-- <a onclick="mySelect('ทิฆัมพร เทพสุต')">ทิฆัมพร เทพสุต <br> 1111111111 </a> -->
-        <?php
-        if(!empty($row))
-            foreach($row as $rows) {
-        ?>
-            <a onclick="mySelect( '<?php echo $rows['fullname'] . ' ' . $rows['lastname']; ?>' , '<?php echo $rows['id']; ?>' )"> <?php echo $rows['fullname'] . ' ' . $rows['lastname']; ?> <br> <?php echo $rows['id']; ?> </a>
-        <?php
-            }
-        ?>
+            <?php
+            if(!empty($row))
+                foreach($row as $rows) {
+            ?>
+                <a onclick="mySelect( '<?php echo $rows['fullname'] . ' ' . $rows['lastname']; ?>' , '<?php echo $rows['id']; ?>' )"> <?php echo $rows['fullname'] . ' ' . $rows['lastname']; ?> <br> <?php echo $rows['id']; ?> </a>
+            <?php
+                }
+            ?>
+        </div>
     </div>
-    </div>
+</div>
+<div>
+    <h1> Helloooooooooo </h1>
 </div>
 
 

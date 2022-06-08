@@ -1,5 +1,13 @@
 function myFunction() {                                                                                //show dropdown content
     document.getElementById("myDropdown").classList.toggle("show");
+    /*
+    var sub1 = document.createElement('div') ;
+    var sub2 = document.createElement('h1') ;
+    var sub3 = document.createTextNode("appear!") ;
+    sub2.appendChild(sub3) ;
+    sub1.appendChild(sub2) ;
+    document.getElementById("alldropdown").appendChild(sub1) ;
+    */
 }
 
 function filterFunction() {
@@ -28,7 +36,7 @@ function filterFunction() {
         if (j >= fname.length) {
             break ;
         }
-        if (!(fname[j] == input.value[j])) {
+        if (fname[j] != input.value[j]) {
             isOk = false ;
             break ;
         }
@@ -40,7 +48,7 @@ function filterFunction() {
             }
             break ;
         } 
-        if (!(lname[j] == input.value[j])) {
+        if (lname[j] != input.value[j]) {
             isOk2 = false ;
             break ;
         }
@@ -52,7 +60,7 @@ function filterFunction() {
             }
             break ;
         }
-        if (!(id[j] == input.value[j])) {
+        if (id[j] != input.value[j]) {
             isOk3 = false ;
             break ;
         }
@@ -61,7 +69,7 @@ function filterFunction() {
     if (isOk) {
         for (j = 0; j < InputLength; j++) {
             if (j > stringCheck.length) break ;
-            if (!(stringCheck[j] == input.value[j])) {
+            if (stringCheck[j] != input.value[j]) {
                 isOk4 = false ;
                 break ;
             }
