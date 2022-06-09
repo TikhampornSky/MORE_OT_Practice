@@ -32,7 +32,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+    var input = document.getElementById("myInput").value;
+    if (input != "") {
+        document.getElementsByClassName("dropdown-content")[0].style.display = "block";
+        document.getElementById("myInput").style.display = "block";
+        document.getElementById("listTochoose").style.display = "none";
+    }
     console.log( "ready!" );
+    console.log(input) ;
 /*
   $("button").click(function(){
     $("p").slideToggle();
@@ -62,14 +69,20 @@ $(document).ready(function(){
 </div>
 
 <div class="dropdown" id="alldropdown">
-    <input type="checkbox" id="myCheck" onchange="myFunction(this.checked)" autocomplete="off">
-    <label for="myCheck">โปรดเลือกผู้อนุมัติของท่าน</label> 
+    <div>
+        <input type="checkbox" id="myCheck" onchange="myFunction(this.checked)">
+        <label for="myCheck">โปรดเลือกผู้อนุมัติของท่าน</label> 
+    </div>
+
     <div>
         <h1> Hiiiiiiiiiiiiiii </h1>
     </div>
+
     <div id="myDropdown" class="dropdown-content" >
-        <input type="text" placeholder="โปรดใส่ชื่อผู้อนุมัติของท่าน" class = "myInputClass" id="myInput" onkeyup="filterFunction()">
-        <div id="listTochoose">
+        <div id="searchBox">
+            <input type="text" placeholder="โปรดใส่ชื่อผู้อนุมัติของท่าน" class = "myInputClass" id="myInput" onkeyup="filterFunction()">
+        </div>
+        <div class="listTochoose" id="listTochoose">
         <!-- <a onclick="mySelect('ทิฆัมพร เทพสุต')">ทิฆัมพร เทพสุต <br> 1111111111 </a> -->
             <?php
             if(!empty($row))
