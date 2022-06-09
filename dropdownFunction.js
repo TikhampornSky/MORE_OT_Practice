@@ -1,5 +1,16 @@
-function myFunction() {                                                                                //show dropdown content
-    document.getElementById("myDropdown").classList.toggle("show");
+
+function myFunction(isCheck) {  //show dropdown content
+    console.log(isCheck) ;
+    if (isCheck) {
+        document.getElementsByClassName("dropdown-content")[0].style.display = "block";
+    } else {
+        document.getElementsByClassName("dropdown-content")[0].style.display = "none";
+    }     
+    /*
+    $('#termsOfUse').prop('checked',false);
+    $('#termsOfUse').change(function() {
+    $('#createBtn').prop('disabled', !this.checked);}).change(); // execute at load                                                                       
+    //document.getElementById("myDropdown").classList.toggle("show");
     /*
     var sub1 = document.createElement('div') ;
     var sub2 = document.createElement('h1') ;
@@ -92,6 +103,7 @@ function mySelect(valueSelect, id) {
     var arr = valueSelect.split(" ") ;
     document.getElementById("myInput").value = arr[0] + " " + arr[1] ;
     console.log(arr[0] + " " + arr[1]) ;
+    document.getElementById("myInput").style.display = "block";
     document.getElementById("listTochoose").style.display = "none";
     var Approve1ID = id ;
     console.log(Approve1ID) ;

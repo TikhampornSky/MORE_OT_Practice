@@ -29,51 +29,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    console.log( "ready!" );
+/*
+  $("button").click(function(){
+    $("p").slideToggle();
+  });
+  */
+});
+</script>
 <meta http-equiv="Content-Language" content="th" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">   
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-#myInput {
-  box-sizing: border-box;
-  background-position: 14px 12px;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  padding: 14px 20px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
-  height: auto;
-}
-
-#myInput:focus {outline: 3px solid #ddd;}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  background-color: #f6f6f6;
-  min-width: 230px;
-  overflow: auto;
-  border: 1px solid #ddd;
-  height: auto;
-  position: relative;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown a:hover {background-color: #ddd;}
-
-.show {display: block;}
-</style>
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
@@ -90,13 +62,13 @@
 </div>
 
 <div class="dropdown" id="alldropdown">
-    <input type="checkbox" id="myCheck" onclick="myFunction()">
+    <input type="checkbox" id="myCheck" onchange="myFunction(this.checked)" autocomplete="off">
     <label for="myCheck">โปรดเลือกผู้อนุมัติของท่าน</label> 
     <div>
         <h1> Hiiiiiiiiiiiiiii </h1>
     </div>
     <div id="myDropdown" class="dropdown-content" >
-        <input type="text" placeholder="โปรดใส่ชื่อผู้อนุมัติของท่าน" id="myInput" onkeyup="filterFunction()">
+        <input type="text" placeholder="โปรดใส่ชื่อผู้อนุมัติของท่าน" class = "myInputClass" id="myInput" onkeyup="filterFunction()">
         <div id="listTochoose">
         <!-- <a onclick="mySelect('ทิฆัมพร เทพสุต')">ทิฆัมพร เทพสุต <br> 1111111111 </a> -->
             <?php
@@ -112,6 +84,10 @@
 </div>
 <div>
     <h1> Helloooooooooo </h1>
+</div>
+
+<div>
+    <a href="./test.html"> LINK </a>
 </div>
 
 
