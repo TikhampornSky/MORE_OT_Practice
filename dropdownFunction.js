@@ -1,6 +1,6 @@
 
 function myFunction(isCheck) {  //show dropdown content
-    console.log(isCheck) ;
+    //console.log(isCheck) ;
     if (isCheck) {
         document.getElementsByClassName("dropdown-content")[0].style.display = "block";
     } else {

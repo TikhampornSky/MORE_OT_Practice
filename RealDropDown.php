@@ -33,13 +33,14 @@
 <script>
 $(document).ready(function(){
     var input = document.getElementById("myInput").value;
-    if (input != "") {
+    if (input != "" && document.getElementById("myCheck").checked == true) {
         document.getElementsByClassName("dropdown-content")[0].style.display = "block";
         document.getElementById("myInput").style.display = "block";
         document.getElementById("listTochoose").style.display = "none";
     }
     console.log( "ready!" );
     console.log(input) ;
+    console.log(document.getElementById("myCheck").checked) ;
 /*
   $("button").click(function(){
     $("p").slideToggle();
