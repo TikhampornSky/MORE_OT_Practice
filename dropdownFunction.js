@@ -96,7 +96,7 @@ function mySelect(valueSelect, id) {
     var arr = valueSelect.split(" ") ;
     document.getElementById("myInput").value = arr[0] + " " + arr[1] ;
     console.log(arr[0] + " " + arr[1]) ;
-    document.getElementById("myInput").style.display = "block";
+    document.getElementById("myInput").style.display = "block";         /* difference */
     document.getElementById("listTochoose").style.display = "none";
     var Approve1ID = id ;
     console.log(Approve1ID) ;
