@@ -9,14 +9,14 @@
     height: auto;
   }
   
-  #myInput:focus {outline: 3px solid #ddd;}
+#myInput:focus {outline: 3px solid #ddd;}
   
-  .dropdown {
+.dropdown {
     position: relative;
     display: inline-block;
   }
   
-  .dropdown-content {
+.dropdown-content {
     display: none;
     background-color: #f6f6f6;
     min-width: 230px;
@@ -26,13 +26,28 @@
     position: relative;
   }
   
-  .dropdown-content a {
+.dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
   
-  .dropdown a:hover {background-color: #ddd;}
+.dropdown a:hover {background-color: #ddd;}
   
-  .show {display: block;}
+.show {display: block;}
+
+#warn-type {
+  color: red;
+  display: none;
+}
+
+#warn-approve1 {
+  color: red;
+  display: none;
+}
+
+#warn-approve2 {
+  color: red;
+  display: none;
+}

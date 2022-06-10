@@ -2,18 +2,19 @@ function myFunction(isCheck) {  //show dropdown content
     //console.log(isCheck) ;
     if (isCheck) {
         document.getElementsByClassName("dropdown-content")[0].style.display = "block";
-        var name = document.getElementById("myInput").value ;
-        if (name != "") {
-            console.log("here") ;
-            document.getElementById("myInput").style.display = "block";
-            document.getElementById("listTochoose").style.display = "none";
-        }
+        document.getElementById("myInput").style.display = "block";
+        document.getElementById("listTochoose").style.display = "none";
     } else {
         document.getElementsByClassName("dropdown-content")[0].style.display = "none";
     }     
 }
 
 function filterFunction() {
+  var name = document.getElementById("myInput").value ;
+  if (name == "") {
+    document.getElementById("listTochoose").style.display = "none";
+    return ;
+  }
   var input, filter, ul, li, a, i;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
@@ -99,4 +100,53 @@ function mySelect(valueSelect, id) {
     document.getElementById("listTochoose").style.display = "none";
     var Approve1ID = id ;
     console.log(Approve1ID) ;
+}
+
+function validateForm() {
+    var search = document.forms["myForm"]["searchBox"].value;
+    var radios = document.getElementsByName('yesno');
+    var choice1 = radios[0].checked ;
+    var choice2 = radios[1].checked ;
+    var typeworkk = document.getElementById('IDtypeWork').value ;
+    //console.log(typeworkk) ;
+    var yn ;
+    if (choice1) {
+        yn = radios[0].value ;
+    } else {
+        yn = radios[1].value ;
+    }
+    //console.log(yn) ;
+    var isOk1 = true ;
+    var isOk2 = true ;
+    var isOk3 = true ;
+    if (yn == "y" && (search == "" || search == null)) {
+        isOk1 = false ;
+    }
+    if (!choice1 && !choice2) {
+        isOk2 = false ;
+    }
+    if (typeworkk == "none") {
+        isOk3 = false ;
+    }
+
+    if (!isOk1) {
+        document.getElementById("warn-approve1").style.display = "block";
+    } else {
+        document.getElementById("warn-approve1").style.display = "none";
+    }
+    if (!isOk2) {
+        document.getElementById("warn-approve2").style.display = "block";
+    } else {
+        document.getElementById("warn-approve2").style.display = "none";
+    }
+    if (!isOk3) {
+        document.getElementById("warn-type").style.display = "block";
+    } else {
+        document.getElementById("warn-type").style.display = "none";
+    }
+
+    if ((isOk1 && isOk2 && isOk3) == false) {
+        return false ;
+    }
+    return true ;
 }

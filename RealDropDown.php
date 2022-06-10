@@ -57,16 +57,21 @@ $(document).ready(function(){
 <h2>Search/Filter Dropdown</h2>
 <p>Demo of drag and drop for select approval</p>
 
+<form name="myForm" onsubmit=" return validateForm()" method="post" required>
+
 <div>
+    <p id="warn-type"> กรุณาเลือกรูปแบบการบันทึกเวลา  </p>
     <label for="SelectTypeOfWork">โปรดเลือกรูปแบบการทำงานของคุณ :</label>
     <select name="typeWork" id="IDtypeWork">
-        <option value="none" selected disabled hidden>รูปแบบการทำงาน</option>
-        <option value="ปกติ"> ปกติ </option>
+        <option value="none" selected hidden>รูปแบบการทำงาน</option>
+        <option value="แตะบัตร"> แตะบัตร </option>
         <option value="ทำงานนอกสถานที่"> ทำงานนอกสถานที่ </option>
     </select>
 </div>
 
 <div>
+    <p id="warn-approve1"> กรุณาระบุชื่อผู้ตรวจสอบในระดับผู้ช่วยผู้จัดการ/ผู้ชำนาญการ </p>
+    <p id="warn-approve2"> กรุณาเลือกว่าท่านมีผู้ตรวจสอบในระดับผู้ช่วยผู้จัดการ/ผู้ชำนาญการหรือไม่ </p>
     <p>ท่านมีผู้ตรวจสอบในระดับผู้ช่วยผู้จัดการ/ผู้ชำนาญการหรือไม่</p>
     <input type="radio" name="yesno" value="y" onchange="myFunction(true)"> มี
     <input type="radio" name="yesno" value="n" onchange="myFunction(false)"> ไม่มี
@@ -76,7 +81,7 @@ $(document).ready(function(){
     
     <div id="myDropdown" class="dropdown-content" >
         <div id="searchBox">
-            <input type="text" placeholder="โปรดใส่ชื่อผู้อนุมัติของท่าน" class = "myInputClass" id="myInput" onkeyup="filterFunction()">
+            <input type="text" placeholder="โปรดใส่ชื่อผู้อนุมัติของท่าน" class = "myInputClass" id="myInput" onkeyup="filterFunction()" name="searchBox">
         </div>
         <div class="listTochoose" id="listTochoose">
         <!-- <a onclick="mySelect('ทิฆัมพร เทพสุต')">ทิฆัมพร เทพสุต <br> 1111111111 </a> -->
@@ -91,6 +96,11 @@ $(document).ready(function(){
         </div>
     </div>
 </div>
+
+<!-- <input type="submit" value="Submit"> -->
+<button type="summit">Click Me!</button>
+
+</form>
 
 <div>
     <a href="./test.html"> LINK </a>
