@@ -1,24 +1,16 @@
-
 function myFunction(isCheck) {  //show dropdown content
     //console.log(isCheck) ;
     if (isCheck) {
         document.getElementsByClassName("dropdown-content")[0].style.display = "block";
+        var name = document.getElementById("myInput").value ;
+        if (name != "") {
+            console.log("here") ;
+            document.getElementById("myInput").style.display = "block";
+            document.getElementById("listTochoose").style.display = "none";
+        }
     } else {
         document.getElementsByClassName("dropdown-content")[0].style.display = "none";
     }     
-    /*
-    $('#termsOfUse').prop('checked',false);
-    $('#termsOfUse').change(function() {
-    $('#createBtn').prop('disabled', !this.checked);}).change(); // execute at load                                                                       
-    //document.getElementById("myDropdown").classList.toggle("show");
-    /*
-    var sub1 = document.createElement('div') ;
-    var sub2 = document.createElement('h1') ;
-    var sub3 = document.createTextNode("appear!") ;
-    sub2.appendChild(sub3) ;
-    sub1.appendChild(sub2) ;
-    document.getElementById("alldropdown").appendChild(sub1) ;
-    */
 }
 
 function filterFunction() {

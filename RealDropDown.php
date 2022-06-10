@@ -32,20 +32,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    var input = document.getElementById("myInput").value;
-    if (input != "" && document.getElementById("myCheck").checked == true) {
-        document.getElementsByClassName("dropdown-content")[0].style.display = "block";
-        document.getElementById("myInput").style.display = "block";
-        document.getElementById("listTochoose").style.display = "none";
-    }
     console.log( "ready!" );
-    console.log(input) ;
-    console.log(document.getElementById("myCheck").checked) ;
-/*
-  $("button").click(function(){
-    $("p").slideToggle();
-  });
-  */
+    if (document.querySelector('input[name="yesno"]:checked') != null) {
+        var data = document.querySelector('input[name="yesno"]:checked').value;
+        console.log(data) ;
+        if (data == "y") {
+            document.getElementsByClassName("dropdown-content")[0].style.display = "block";
+            document.getElementById("myInput").style.display = "block";
+            document.getElementById("listTochoose").style.display = "none";
+        }
+        console.log(data) ;
+    }
 });
 </script>
 <meta http-equiv="Content-Language" content="th" />
@@ -69,16 +66,14 @@ $(document).ready(function(){
     </select>
 </div>
 
+<div>
+    <p>ท่านมีผู้ตรวจสอบในระดับผู้ช่วยผู้จัดการ/ผู้ชำนาญการหรือไม่</p>
+    <input type="radio" name="yesno" value="y" onchange="myFunction(true)"> มี
+    <input type="radio" name="yesno" value="n" onchange="myFunction(false)"> ไม่มี
+</div>
+
 <div class="dropdown" id="alldropdown">
-    <div>
-        <input type="checkbox" id="myCheck" onchange="myFunction(this.checked)">
-        <label for="myCheck">โปรดเลือกผู้อนุมัติของท่าน</label> 
-    </div>
-
-    <div>
-        <h1> Hiiiiiiiiiiiiiii </h1>
-    </div>
-
+    
     <div id="myDropdown" class="dropdown-content" >
         <div id="searchBox">
             <input type="text" placeholder="โปรดใส่ชื่อผู้อนุมัติของท่าน" class = "myInputClass" id="myInput" onkeyup="filterFunction()">
@@ -95,9 +90,6 @@ $(document).ready(function(){
             ?>
         </div>
     </div>
-</div>
-<div>
-    <h1> Helloooooooooo </h1>
 </div>
 
 <div>
