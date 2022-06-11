@@ -14,20 +14,39 @@
        exit();
     }
   
-    $sql = "select fullname, lastname, id from person ORDER BY fullname, lastname, id" ;
+    $sql = "select * from person ORDER BY fullname, lastname, id" ;
     $result = ($conn->query($sql));
     //declare array to store the data of database
-    $row = []; 
   
     if ($result->num_rows > 0) 
     {
         // fetch all data from db into array 
         $row = $result->fetch_all(MYSQLI_ASSOC);  
     }
-    
+
+    $myname = $_GET['myname'] ;
+    $arr = explode(" ", $myname);
+    $fullname = $arr[0] ; 
+    $lastname = $arr[1] ;
+
+    $OLD_approve_firstname = "";
+    $OLD_approve_lastname = "";
+    $OLD_approve_id ;
+    $approve = $conn->query("SELECT reviewer FROM person WHERE fullname='$fullname' AND lastname='$lastname'") ;   //return as object ;
+    while ($row2 = $approve->fetch_assoc()) {
+        $OLD_approve_id =  $row2['reviewer'] ;
+    }
+    //find name and lastname of old approver
+    if ($OLD_approve_id != "") {
+        $approve2 = $conn->query("SELECT fullname, lastname FROM person WHERE id='$OLD_approve_id'") ;   //return as object ;
+        while ($row3 = $approve2->fetch_assoc()) {
+            $OLD_approve_firstname = $row3['fullname'] ;
+            $OLD_approve_lastname = $row3['lastname'];
+        }
+    }
+
     if (isset($_POST["save"])) {
         $approve1 = $_POST['searchBox'];
-        $myname = $_POST['myname'];
         header("Location: test.php?type=demo&approve1=$approve1&myname=$myname");
     }
 ?>
@@ -41,14 +60,21 @@ $(document).ready(function(){
     console.log( "ready!" );
     if (document.querySelector('input[name="yesno"]:checked') != null) {
         var data = document.querySelector('input[name="yesno"]:checked').value;
-        console.log(data) ;
         if (data == "y") {
             document.getElementsByClassName("dropdown-content")[0].style.display = "block";
             document.getElementById("myInput").style.display = "block";
             document.getElementById("listTochoose").style.display = "none";
         }
-        console.log(data) ;
     }
+    
+    //------- initialize value in search box----------
+    var old_id = '<?php echo $OLD_approve_id;?>';
+    if (old_id != '') {
+        var old_name = '<?php echo $OLD_approve_firstname . " ". $OLD_approve_lastname;?>';
+        document.getElementById("myInput").value = old_name ;
+        console.log(old_id) ;
+    }
+    
 });
 </script>
 <meta http-equiv="Content-Language" content="th" />
@@ -62,25 +88,10 @@ $(document).ready(function(){
 
 <h2>Search/Filter Dropdown</h2>
 <p>Demo of drag and drop for select approval</p>
+<p> <?php echo $OLD_approve_id;?> </p>
+<p> <?php echo $OLD_approve_firstname . "  " . $OLD_approve_lastname;?> </p>
 
 <form name="myForm" onsubmit=" return validateForm()" method="post" required>
-
-<!-- log in demo -->
-<label for="myname">Choose your name:</label>
-<select name="myname" id="IDmyname">
-    <div>
-        <!-- <a onclick="mySelect('ทิฆัมพร เทพสุต')">ทิฆัมพร เทพสุต <br> 1111111111 </a> -->
-            <?php
-            if(!empty($row))
-                foreach($row as $rows) {
-            ?>
-                <option> <?php echo $rows['fullname'] . ' ' . $rows['lastname']; ?> <br> <?php echo $rows['id']; ?> </option>
-            <?php
-                }
-            ?>
-    </div>
-</select>
-<!-- --------- -->
 
 <div>
     <p id="warn-type"> กรุณาเลือกรูปแบบการบันทึกเวลา  </p>

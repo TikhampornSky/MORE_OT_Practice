@@ -16,6 +16,7 @@
   $myname = $_GET['myname']; 
 
   $arr = explode(" ", $myname);
+  //echo $arr[0] . "++" . $arr[1] ;
   $fullname = $arr[0] ; 
   $lastname = $arr[1] ;
   $id ;
