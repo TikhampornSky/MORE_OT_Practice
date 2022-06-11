@@ -23,7 +23,13 @@
     {
         // fetch all data from db into array 
         $row = $result->fetch_all(MYSQLI_ASSOC);  
-    }   
+    }
+    
+    if (isset($_POST["save"])) {
+        $approve1 = $_POST['searchBox'];
+        $myname = $_POST['myname'];
+        header("Location: test.html?type=demo&approve1=$approve1&myname=$myname");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +65,23 @@ $(document).ready(function(){
 
 <form name="myForm" onsubmit=" return validateForm()" method="post" required>
 
+<!-- log in demo -->
+<label for="myname">Choose your name:</label>
+<select name="myname" id="IDmyname">
+    <div>
+        <!-- <a onclick="mySelect('ทิฆัมพร เทพสุต')">ทิฆัมพร เทพสุต <br> 1111111111 </a> -->
+            <?php
+            if(!empty($row))
+                foreach($row as $rows) {
+            ?>
+                <option> <?php echo $rows['fullname'] . ' ' . $rows['lastname']; ?> <br> <?php echo $rows['id']; ?> </option>
+            <?php
+                }
+            ?>
+    </div>
+</select>
+<!-- --------- -->
+
 <div>
     <p id="warn-type"> กรุณาเลือกรูปแบบการบันทึกเวลา  </p>
     <label for="SelectTypeOfWork">โปรดเลือกรูปแบบการทำงานของคุณ :</label>
@@ -76,6 +99,7 @@ $(document).ready(function(){
     <input type="radio" name="yesno" value="y" onchange="myFunction(true)"> มี
     <input type="radio" name="yesno" value="n" onchange="myFunction(false)"> ไม่มี
 </div>
+
 
 <div class="dropdown" id="alldropdown">
     
@@ -98,7 +122,7 @@ $(document).ready(function(){
 </div>
 
 <!-- <input type="submit" value="Submit"> -->
-<button type="summit">Click Me!</button>
+<button type="summit" name="save">Click Me!</button>
 
 </form>
 
