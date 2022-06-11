@@ -28,7 +28,7 @@
     if (isset($_POST["save"])) {
         $approve1 = $_POST['searchBox'];
         $myname = $_POST['myname'];
-        header("Location: test.html?type=demo&approve1=$approve1&myname=$myname");
+        header("Location: test.php?type=demo&approve1=$approve1&myname=$myname");
     }
 ?>
 
