@@ -102,7 +102,7 @@ function mySelect(valueSelect, id) {
     console.log(Approve1ID) ;
 }
 
-function validateForm() {
+function validateForm(ok) {
     var search = document.forms["myForm"]["searchBox"].value;
     var radios = document.getElementsByName('yesno');
     var choice1 = radios[0].checked ;
@@ -145,8 +145,12 @@ function validateForm() {
         document.getElementById("warn-type").style.display = "none";
     }
 
+    console.log(ok) ;
     if ((isOk1 && isOk2 && isOk3) == false) {
-        return false ;
+        return false && ok ;
+    } else {
+        var x = true && ok ;
+        console.log("-->" + x) ;
+        return true && ok;
     }
-    return true ;
 }
